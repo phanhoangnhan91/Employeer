@@ -1,14 +1,25 @@
 ﻿@model dynamic
 @using Futurify.Training.Employees.Models
 @{
-    var employee = Model.Model;
+    var employee = (Futurify.Training.Employees.ViewModels.EmployeeViewModel)Model.Model;
 }
 <fieldset>
     <legend>Employees Fields</legend>
 
-    <div class="editor-label">
-        <span>@employee.Name</span>
-    </div>
+    <table border="1">
+        <tr>
+            <th>Tên</th>
+            <th>Địa chỉ</th>
+            <th>tuổi</th>
+        </tr>
+        <tr>
+            <td>@employee.Name</td>
+            <td>@employee.Address</td>
+            <td>@employee.Age</td>
+        </tr>
+        
+    </table>
+    
     
 
 </fieldset>

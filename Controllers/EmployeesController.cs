@@ -41,8 +41,9 @@ namespace Futurify.Training.Employees.Controllers
             // buildDisplay để tạo ra ds các shap
             var lstemployees = lst.Select(t => _cms.BuildDisplay(t)); // duyệt từng t trong lst sau đó buildDisplay từng thằng t
 
+            //return View("EmployeesList",  lstemployees);
             // hiện các sharp này ra bên ngoài 
-            return new ShapeResult(this, Shape.EmployeesMain(List: lstemployees));
+          return new ShapeResult(this, Shape.EmployeesMain(List: lstemployees));
         }
 
         public ActionResult SaveEmployees(int id)
