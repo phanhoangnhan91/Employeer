@@ -1,0 +1,6 @@
+﻿
+@using (Html.BeginFormAntiForgeryPost(Url.Action("SaveEmployees", new { area = "Futurify.Training.Employees", controller = "Employees" }), FormMethod.Post, new { @class = "form-horizontal", id = "Empl" }))
+{
+    
+    @Display(Model)
+}

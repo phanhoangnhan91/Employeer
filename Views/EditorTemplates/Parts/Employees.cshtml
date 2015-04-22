@@ -1,0 +1,32 @@
+﻿@model Futurify.Training.Employees.ViewModels.EmployeeViewModel
+@{
+    var id = Model.Id;
+}
+<fieldset>
+    <legend>Map Fields</legend>
+   
+    @*<div class="editor-label">
+        @Html.Hidden(model => model.Id)
+        @Html.LabelFor(model => model.Name)
+    </div>*@
+    <input type="hidden" name="id" value="@id" />
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Adress)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Adress)
+        @Html.ValidationMessageFor(model => model.Adress)
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Age)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Age)
+        @Html.ValidationMessageFor(model => model.Age)
+    </div>
+</fieldset>
