@@ -48,6 +48,14 @@ namespace Futurify.Training.Employees.Controllers
             // hiện các sharp này ra bên ngoài 
           return new ShapeResult(this, Shape.EmployeesMain(List: lstemployees));
         }
+        public ActionResult EditEmployees( int Id)
+        {
+            _cms = _services.ContentManager;
+            var emPloyees = _cms.Get(Id, VersionOptions.AllVersions);
+            var model = _cms.BuildEditor(emPloyees);
+            return View("Employees", (object)model);
+            //return new ShapeResult(this, model);
+        }
 
         public ActionResult SaveEmployees() {
             var viewModel = new EmployeeViewModel();
