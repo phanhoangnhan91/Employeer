@@ -49,7 +49,7 @@ namespace Futurify.Training.Employees.Drivers
             updater.TryUpdateModel(viewmodel, Prefix, null, null); // truy update nghĩa là lấy dữ liệu từ trên xuống
             part.Adress = viewmodel.Address;
             part.Age = viewmodel.Age;
-            part.Name = viewmodel.Name;
+            part.As<TitlePart>().Title = viewmodel.Name;
 
             return Editor(part, shapeHelper);
         }
