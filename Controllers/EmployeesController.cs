@@ -28,7 +28,7 @@ namespace Futurify.Training.Employees.Controllers
             _cms = _services.ContentManager;
         }
 
-        public ActionResult Index()
+        public ActionResult Index() // them
         {
             _cms = _services.ContentManager;
             var employees = _cms.Create("Employees", VersionOptions.Draft);
@@ -37,10 +37,10 @@ namespace Futurify.Training.Employees.Controllers
             //return new ShapeResult(this, model);
         }
 
-        public ActionResult DisplayEmployees()
+        public ActionResult DisplayEmployees() // hien thi danh sach
         {
             // lấy danh sách các employee
-            var lst = _cms.Query(VersionOptions.Published, "Employees").Where<EmployeesPartRecord>(t=>t.Name=="").List();
+            var lst = _cms.Query(VersionOptions.Published, "Employees").List();
             // buildDisplay để tạo ra ds các shap
             var lstemployees = lst.Select(t => _cms.BuildDisplay(t)); // duyệt từng t trong lst sau đó buildDisplay từng thằng t
 
@@ -51,13 +51,13 @@ namespace Futurify.Training.Employees.Controllers
         public ActionResult EditEmployees( int Id)
         {
             _cms = _services.ContentManager;
-            var emPloyees = _cms.Get(Id, VersionOptions.AllVersions);
+            var emPloyees = _cms.Get(Id, VersionOptions.AllVersions);// them va edit giong nhau chi khac nhau luc them tao ra mot emp null, con edit lay tu mot employ co san 
             var model = _cms.BuildEditor(emPloyees);
             return View("Employees", (object)model);
             //return new ShapeResult(this, model);
         }
 
-        public ActionResult SaveEmployees() {
+        public ActionResult SaveEmployees() {  // khi nhan nut luu
             var viewModel = new EmployeeViewModel();
             TryUpdateModel(viewModel, "EmployeesPart");
             var emPloyees =_cms.Get(viewModel.Id, VersionOptions.AllVersions);

@@ -43,11 +43,13 @@ namespace Futurify.Training.Employees.Drivers
         }
         //POST
         protected override DriverResult Editor(  
-            EmployeesPart part, IUpdateModel updater, dynamic shapeHelper) // hàm sửa 
+            EmployeesPart part, IUpdateModel updater, dynamic shapeHelper) // lay du lieu gan vao part
         {
             var viewmodel = new EmployeeViewModel();
             updater.TryUpdateModel(viewmodel, Prefix, null, null); // truy update nghĩa là lấy dữ liệu từ trên xuống
             part.Adress = viewmodel.Address;
+            part.Age = viewmodel.Age;
+            part.Name = viewmodel.Name;
 
             return Editor(part, shapeHelper);
         }
