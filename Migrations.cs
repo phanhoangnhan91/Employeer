@@ -51,5 +51,40 @@ namespace Futurify.Training.Employees
             ContentDefinitionManager.AlterTypeDefinition("Employees", type => type.RemovePart("BodyPart"));
             return 4;
         }
+        public int UpdateFrom4()
+        {
+            ContentDefinitionManager.AlterPartDefinition(
+               "EmployeesPartRecord"
+               , b => b
+                   .Attachable()
+                   .WithField("Birthday", cfg => cfg.OfType("DateTimeField")
+                   .WithDisplayName("Ngày sinh"))
+           );
+            return 5;
+        }
+        public int UpdateFrom5()
+        {
+            ContentDefinitionManager.AlterPartDefinition(
+               "EmployeesPartRecord"
+               , b => b
+                   .Attachable()
+                   .WithField("Birthday", cfg => cfg.OfType("DateTimeField")
+                   .WithDisplayName("Ngày sinh"))
+           );
+            return 6;
+        }
+
+        public int UpdateFrom6() {
+            ContentDefinitionManager.AlterPartDefinition(
+               "BirthdayPart"
+               , b => b
+                   .Attachable()
+                   .WithField("BirthdayField", cfg => cfg.OfType("DateTimeField")
+                   .WithDisplayName("Ngày sinh"))
+           );
+            ContentDefinitionManager.AlterTypeDefinition("Employees", type => type
+                .WithPart("BirthdayPart"));
+            return 7;
+        }
     }
 }
