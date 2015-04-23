@@ -1,11 +1,17 @@
 ﻿<Placement>
-  <Place Parts_Employees_Edit="Content:1"/>
-  <Place Parts_Employees="Content:1"/>
-  <Place Parts_Common_Metadata="-"/>
-  <Place Parts_Common_Metadata_Summary="-"/>
-  <Place Parts_Common_Metadata_SummaryAdmin="-"/>
-  <Place Parts_Title_Summary="-"/>
-  <Place Parts_Title_Edit="-"/>
-  <Place Parts_Common_Owner_Edit="-" />
-  <Place Parts_Common_Metadata_Summary="-"/>
+  <Match ContentType="Employees">
+    <Place Parts_Employees_Edit="Content:1"/>
+    <Place Fields_DateTime_Edit="Content:2"/>    
+    <Place Parts_Common_Metadata="-"/>
+    <Place Parts_Common_Metadata_Summary="-"/>
+    <Place Parts_Common_Metadata_SummaryAdmin="-"/>    
+    <Place Parts_Title_Edit="-"/>
+    <Place Parts_Common_Owner_Edit="-" />
+    <Place Parts_Common_Metadata_Summary="-"/>
+    <Match DisplayType="Summary">
+      <Place Parts_Title_Summary="-"/>
+      <Place Fields_DateTime="Content:2"/>
+      <Place Parts_Employees="Content:1"/>      
+    </Match>
+  </Match>
 </Placement>

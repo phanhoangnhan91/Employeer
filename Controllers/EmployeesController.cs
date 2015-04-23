@@ -42,7 +42,7 @@ namespace Futurify.Training.Employees.Controllers
             // lấy danh sách các employee
             var lst = _cms.Query(VersionOptions.Published, "Employees").List();
             // buildDisplay để tạo ra ds các shap
-            var lstemployees = lst.Select(t => _cms.BuildDisplay(t)); // duyệt từng t trong lst sau đó buildDisplay từng thằng t
+            var lstemployees = lst.Select(t => _cms.BuildDisplay(t, "Summary")); // duyệt từng t trong lst sau đó buildDisplay từng thằng t
 
             //return View("EmployeesList",  lstemployees);
             // hiện các sharp này ra bên ngoài 

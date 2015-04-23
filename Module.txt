@@ -8,3 +8,4 @@ Description: Description for the module
 Features:
     Futurify.Training.Employees:
         Description: Description for feature Futurify.Training.Employees.
+		Dependencies: Orchard.Fields
