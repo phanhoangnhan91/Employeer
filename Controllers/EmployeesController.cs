@@ -1,6 +1,8 @@
-﻿using Futurify.Training.Employees.Services;
+﻿using Futurify.Training.Employees.Models;
+using Futurify.Training.Employees.Services;
 using Orchard;
 using Orchard.ContentManagement;
+using Orchard.Core.Title.Models;
 using Orchard.DisplayManagement;
 using Orchard.Localization;
 using Orchard.Mvc;
@@ -9,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Futurify.Training.Employees.ViewModels;
 
 namespace Futurify.Training.Employees.Controllers
 {
@@ -37,7 +40,7 @@ namespace Futurify.Training.Employees.Controllers
         public ActionResult DisplayEmployees()
         {
             // lấy danh sách các employee
-            var lst = _cms.Query(VersionOptions.Published, "Employees").List();
+            var lst = _cms.Query(VersionOptions.Published, "Employees").Where<EmployeesPartRecord>(t=>t.Name=="").List();
             // buildDisplay để tạo ra ds các shap
             var lstemployees = lst.Select(t => _cms.BuildDisplay(t)); // duyệt từng t trong lst sau đó buildDisplay từng thằng t
 
@@ -46,9 +49,11 @@ namespace Futurify.Training.Employees.Controllers
           return new ShapeResult(this, Shape.EmployeesMain(List: lstemployees));
         }
 
-        public ActionResult SaveEmployees(int id)
-        {
-            var emPloyees = _cms.Get(id, VersionOptions.AllVersions);
+        public ActionResult SaveEmployees() {
+            var viewModel = new EmployeeViewModel();
+            TryUpdateModel(viewModel, "EmployeesPart");
+            var emPloyees =_cms.Get(viewModel.Id, VersionOptions.AllVersions);
+
             _cms.UpdateEditor(emPloyees, this);
             _cms.Publish(emPloyees);
             return RedirectToAction("DisplayEmployees");

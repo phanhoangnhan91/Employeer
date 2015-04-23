@@ -18,6 +18,7 @@ namespace Futurify.Training.Employees.Drivers
          EmployeesPart part, string displayType, dynamic shapeHelper)
         {
             var viewmodel = new EmployeeViewModel();
+            viewmodel.Id = part.Id;
             viewmodel.Name = part.As<TitlePart>().Title;
             viewmodel.Age = part.Age;
             viewmodel.Address = part.Adress;
@@ -30,6 +31,7 @@ namespace Futurify.Training.Employees.Drivers
             EmployeesPart part, dynamic shapeHelper) //hàm thêm mới
         {
             var viewmodel = new EmployeeViewModel();
+            viewmodel.Id = part.Id;
             viewmodel.Name = part.As<TitlePart>().Title;
             viewmodel.Age = part.Age;
             viewmodel.Address = part.Adress;
